@@ -1,0 +1,1 @@
+/opt/st/stm32cubeclt_1.22.0/GNU-tools-for-STM32/bin/arm-none-eabi-gdb build/firmware.elf

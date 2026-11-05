@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+                "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Include",
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "STM32F439xx"
+            ],
+            "compilerPath": "/opt/st/stm32cubeclt_1.22.0/GNU-tools-for-STM32/bin/arm-none-eabi-gcc",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-arm",
+            "configurationProvider": "ms-vscode.makefile.tools"
+        }
+    ],
+    "version": 4
+}
