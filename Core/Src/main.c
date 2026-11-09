@@ -20,6 +20,8 @@
 #include "main.h"
 #include "lwip.h"
 
+#include "tcp_server.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -77,48 +79,38 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  // HAL_Init();
+  HAL_Init();
 
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
 
   /* Configure the system clock */
-  // SystemClock_Config();
+  SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  // MX_GPIO_Init();
-  // MX_USART3_UART_Init();
-  // MX_USB_OTG_FS_PCD_Init();
-  // MX_LWIP_Init();
-  /* USER CODE BEGIN 2 */
-  HAL_Init();
   MX_GPIO_Init();
-  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
-
-  int wait = 10000000;
-  while (wait-- > 0);  // Wait for sometime before initializing the system
-
-  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
-  
-  // MPU_Config();
-  // SCB_EnableICache();
-  // SCB_EnableDCache();
-  
-  HAL_Delay (1000);  // wait for some time here
-  
-  SystemClock_Config();
+  MX_USART3_UART_Init();
+  MX_USB_OTG_FS_PCD_Init();
   MX_LWIP_Init();
-  while (1)
+  /* USER CODE BEGIN 2 */
+
+  TCP_server_init();
+
+  u8_t count = 5;
+  while (count)
   {
-    MX_LWIP_Process();
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
+    HAL_Delay(1000);
+    count--;
   }
 
-  uint8_t count = 0;
+  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -128,12 +120,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
-    count += 1;
-
-    if (count > 0) {
-      HAL_Delay(1000);
-    }
+    MX_LWIP_Process();
   }
 
   /* USER CODE END 3 */
