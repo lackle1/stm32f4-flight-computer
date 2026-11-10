@@ -21,6 +21,7 @@
 #include "lwip.h"
 
 #include "tcp_server.h"
+#include "tcp_client.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -99,7 +100,8 @@ int main(void)
   MX_LWIP_Init();
   /* USER CODE BEGIN 2 */
 
-  TCP_server_init();
+  // TCP_server_init();
+  TCP_client_init();
 
   u8_t count = 5;
   while (count)
