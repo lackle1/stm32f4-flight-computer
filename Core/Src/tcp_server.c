@@ -262,7 +262,6 @@ static void _TCP_server_handle(pcb_t *tpcb, ss_t *ss)
 {
     // Allocate a buffer the size of the current packet
     void *buf = mem_malloc(ss->p->tot_len);
-    u8_t *ptr = buf;
 
     pbuf_copy_partial(ss->p, buf, ss->p->tot_len, 0);
     _TCP_server_handle_packet(tpcb, buf, ss->p->tot_len);
